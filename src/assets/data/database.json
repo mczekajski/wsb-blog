@@ -1,0 +1,8 @@
+{
+    "posts": [
+        { "id": 1, "title": "Post numer 1", "text": "Lorem ipsum..." },
+        { "id": 2, "title": "Post numer 2", "text": "Lorem ipsum..." },
+        { "id": 3, "title": "Post numer 3", "text": "Lorem ipsum..." },
+        { "id": 4, "title": "Post numer 4", "text": "Lorem ipsum..." }
+    ]
+}
