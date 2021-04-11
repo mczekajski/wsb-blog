@@ -6,11 +6,13 @@ import { HomeComponent } from '../home/home.component';
 import { MainArticleCardComponent } from './main-article-card/main-article-card.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { PostCardComponent } from './post-card/post-card.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    MainArticleCardComponent
+    MainArticleCardComponent,
+    PostCardComponent
   ],
   imports: [
     CommonModule,
