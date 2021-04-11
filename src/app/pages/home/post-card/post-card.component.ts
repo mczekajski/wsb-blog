@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'wsb-blog-post-card',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
+  @Input() post: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.post);
   }
 
 }

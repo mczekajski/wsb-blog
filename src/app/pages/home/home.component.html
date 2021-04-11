@@ -1,2 +1,3 @@
 <wsb-blog-main-article-card></wsb-blog-main-article-card>
-<wsb-blog-post-card></wsb-blog-post-card>
+<wsb-blog-post-card *ngFor="let post of posts"
+[post]="post"></wsb-blog-post-card>

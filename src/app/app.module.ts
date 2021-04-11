@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeModule } from './pages/home/home.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,7 @@ import { HomeModule } from './pages/home/home.module';
     BrowserModule,
     NgbModule,
     HomeModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
