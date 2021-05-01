@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeModule } from './pages/home/home.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AdminModule } from './pages/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent
   ],
   imports: [
+    AdminModule,
     BrowserModule,
     NgbModule,
     HomeModule,
