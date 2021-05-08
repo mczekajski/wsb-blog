@@ -1,34 +1,34 @@
 {
   "posts": [
     {
-      "postTitle": "Post numer 1",
-      "postBody": "Lorem ipsum...",
-      "id": 1
-    },
-    {
-      "postTitle": "Post numer 2",
-      "postBody": "Lorem ipsum...",
-      "id": 2
-    },
-    {
-      "postTitle": "Post numer 3",
-      "postBody": "Lorem ipsum...",
+      "postTitle": "xcvwr",
+      "postBody": " sdf",
+      "postDate": "2021-05-08T18:45:46.856Z",
       "id": 3
     },
     {
-      "postTitle": "Post numer 4",
-      "postBody": "Lorem ipsum...",
-      "id": 4
-    },
-    {
-      "postTitle": "This is title",
-      "postBody": "Lorem ipsum blablabla",
+      "postTitle": "s",
+      "postBody": "dfdfd",
+      "postDate": "2021-05-08T18:47:18.413Z",
       "id": 5
     },
     {
-      "postTitle": "This is title",
-      "postBody": "Lorem ipsum blablabla",
+      "postTitle": "",
+      "postBody": "",
+      "postDate": "2021-05-08T20:03:24.103Z",
       "id": 6
+    },
+    {
+      "postTitle": "lorem ipsum",
+      "postBody": "higher bla bla bla",
+      "postDate": "2021-05-08T20:21:28.884Z",
+      "id": 7
+    },
+    {
+      "postTitle": "",
+      "postBody": "sdfsd",
+      "postDate": "2021-05-08T20:28:24.924Z",
+      "id": 8
     }
   ]
 }

@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     h1 {
+      margin: 0;
       font-size: 1.5rem;
       color: cadetblue;
       letter-spacing: 2px;
@@ -75,7 +76,7 @@
         cursor: pointer;
         fill: $color-bg;
         &:hover {
-          fill: $color-active;
+          fill: darken($color-active, 50%);
         }
       }
     }

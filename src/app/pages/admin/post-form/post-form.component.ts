@@ -10,10 +10,12 @@ import { BlogService } from 'src/app/services/blog.service';
 export class PostFormComponent implements OnInit {
   public postForm = this.formBuilder.group({
     postTitle: [''],
-    postBody: ['']
+    postBody: [''],
+    postDate: ['']
   })
 
   onSubmit() {
+    this.postForm.setValue({...this.postForm.value, postDate: new Date()})
     this.blogService.sendPost(this.postForm.value).subscribe(post => console.log(post));
   }
 

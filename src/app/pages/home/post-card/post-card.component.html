@@ -1,4 +1,8 @@
-<div>
-    <h2>{{ post.postTitle }}</h2>
-    <p>{{ post.postBody }}</p>
-</div>
+<div class="card" style="margin: 16px 0">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.postTitle }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ post.postDate }}</h6>
+      <p class="card-text">{{ post.postBody }}</p>
+      <a href="#" class="card-link">Read more...</a>
+    </div>
+  </div>
