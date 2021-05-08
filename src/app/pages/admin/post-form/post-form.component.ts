@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'wsb-blog-post-form',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent implements OnInit {
+  public postForm = this.formBuilder.group({
+    postTitle: [''],
+    postBody: ['']
+  })
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onSubmit() {
+    this.blogService.sendPost(this.postForm.value).subscribe(post => console.log(post));
   }
+
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private blogService: BlogService
+  ) { }
+
+  ngOnInit(): void {}
 
 }

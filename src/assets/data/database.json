@@ -1,8 +1,34 @@
 {
-    "posts": [
-        { "id": 1, "title": "Post numer 1", "text": "Lorem ipsum..." },
-        { "id": 2, "title": "Post numer 2", "text": "Lorem ipsum..." },
-        { "id": 3, "title": "Post numer 3", "text": "Lorem ipsum..." },
-        { "id": 4, "title": "Post numer 4", "text": "Lorem ipsum..." }
-    ]
+  "posts": [
+    {
+      "postTitle": "Post numer 1",
+      "postBody": "Lorem ipsum...",
+      "id": 1
+    },
+    {
+      "postTitle": "Post numer 2",
+      "postBody": "Lorem ipsum...",
+      "id": 2
+    },
+    {
+      "postTitle": "Post numer 3",
+      "postBody": "Lorem ipsum...",
+      "id": 3
+    },
+    {
+      "postTitle": "Post numer 4",
+      "postBody": "Lorem ipsum...",
+      "id": 4
+    },
+    {
+      "postTitle": "This is title",
+      "postBody": "Lorem ipsum blablabla",
+      "id": 5
+    },
+    {
+      "postTitle": "This is title",
+      "postBody": "Lorem ipsum blablabla",
+      "id": 6
+    }
+  ]
 }
