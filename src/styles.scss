@@ -1,7 +1,16 @@
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/dist/css/bootstrap-grid';
 
+@import 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Open+Sans&display=swap');
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -10,4 +19,22 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Frank Ruhl Libre', serif;
+}
+
+.content {
+    margin-top: $menu-height;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--column {
+    flex-direction: column;
+  }
 }
