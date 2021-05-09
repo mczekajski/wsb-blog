@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'wsb-blog-admin',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  posts!: any;
 
-  constructor() { }
+  constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
+    this.getPosts();
   }
 
+  getPosts() {
+    this.blogService.getPosts().subscribe(data => this.posts = data);
+  }
 }
