@@ -5,16 +5,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BlogService {
-  private urlBase: string = "http://localhost:3000/posts";
+  public posts: any;
+
+  private urlPostsBase: string = "http://localhost:3000/posts";
   private urlSortByDate: string = "?_sort=postDate&_order=desc";
 
   constructor(private http: HttpClient) {}
 
   public getPosts(){
-    return this.http.get(this.urlBase + this.urlSortByDate + '/');
+    this.http.get(this.urlPostsBase + this.urlSortByDate + '/').subscribe(data => {this.posts = data});
+  }
+
+  public getPost(postId: number) {
+    return this.posts.find(post => post.id === postId)
   }
 
   public sendPost(post){
-    return this.http.post(this.urlBase, post)
+    return this.http.post(this.urlPostsBase, post);
   }
 }

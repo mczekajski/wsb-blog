@@ -10,12 +10,14 @@ import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './pages/admin/admin.module';
 import { MenuComponent } from './menu/menu.component';
+import { PostComponent } from './pages/post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    PostComponent
   ],
   imports: [
     AdminModule,
