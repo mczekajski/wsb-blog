@@ -1,5 +1,6 @@
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -9,20 +10,34 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class PostFormComponent implements OnInit {
   public postForm = this.formBuilder.group({
+    selected: [''],
     postTitle: [''],
     postBody: [''],
-    postDate: ['']
+    postDate: [''],
+    lastEditDate: ['']
   })
 
   onSubmit() {
+    if (this.postForm.value.selected != null) this.sendNewPost();
+  }
+
+  sendNewPost() {
     this.postForm.setValue({...this.postForm.value, postDate: new Date()})
     this.blogService.sendPost(this.postForm.value).subscribe(post => console.log(post));
+  }
+
+  editPost() {
+    window.alert('post edited!');
+  }
+
+  onChange(e) {
+    window.alert(e.target.value)
   }
 
 
   constructor(
     private formBuilder: FormBuilder,
-    private blogService: BlogService
+    public blogService: BlogService
   ) { }
 
   ngOnInit(): void {}

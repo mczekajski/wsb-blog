@@ -1,23 +1,45 @@
 <div>
-    <h4>Add new post</h4>
-    <form autocomplete="off" novalidate [formGroup]="postForm" (ngSubmit)="onSubmit()">
-        <section>
-            <fieldset>
-                <label>Title:
-                    <input type="text" class="form-control mb-3" formControlName="postTitle" required />
-                    <div class="invalid-feedback">
-                        Please choose a username.
-                      </div>
-                </label>
-            </fieldset>
-        </section>
-        <section>
-            <fieldset>
-                <label>Body:
-                    <textarea type="text" class="form-control mb-3" formControlName="postBody" required></textarea>
-                </label>
-            </fieldset>
-        </section>
-        <button class="btn btn-primary">Submit</button>
-    </form>
+  <form
+    autocomplete="off"
+    novalidate
+    [formGroup]="postForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-3">
+      <label for="selection" class="form-label">Select post</label>
+      <select
+        (change)="onChange($event)"
+        formControlName="selected"
+        class="form-select"
+        id="selection"
+      >
+        <option value="0">New post</option>
+        <option *ngFor="let post of this.blogService.posts" [value]="post.id">
+          {{ post.postDate | date }} {{ post.postTitle }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        formControlName="postTitle"
+        class="form-control"
+        id="title"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="body" class="form-label">Body:</label>
+      <textarea
+        type="text"
+        formControlName="postBody"
+        class="form-control"
+        id="body"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>

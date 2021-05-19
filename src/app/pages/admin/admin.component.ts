@@ -7,14 +7,10 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  posts: any;
 
-  constructor(private blogService: BlogService) {
-    this.posts = this.blogService.posts;
-  }
+  constructor(public blogService: BlogService) {}
 
   ngOnInit(): void {
     this.blogService.getPosts();
   }
-
 }
