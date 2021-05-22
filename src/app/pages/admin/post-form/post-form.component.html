@@ -1,25 +1,20 @@
 <div>
+  <div class="mb-3">
+    <label for="selection" class="form-label">Select post</label>
+    <select (change)="onChange($event)" class="form-select" id="selection">
+      <option value="0">New post</option>
+      <option *ngFor="let post of this.blogService.posts" [value]="post.id">
+        {{ post.postDate | date }} {{ post.postTitle }}
+      </option>
+    </select>
+  </div>
+
   <form
     autocomplete="off"
     novalidate
     [formGroup]="postForm"
     (ngSubmit)="onSubmit()"
   >
-    <div class="mb-3">
-      <label for="selection" class="form-label">Select post</label>
-      <select
-        (change)="onChange($event)"
-        formControlName="selected"
-        class="form-select"
-        id="selection"
-      >
-        <option value="0">New post</option>
-        <option *ngFor="let post of this.blogService.posts" [value]="post.id">
-          {{ post.postDate | date }} {{ post.postTitle }}
-        </option>
-      </select>
-    </div>
-
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
@@ -36,10 +31,16 @@
       <textarea
         type="text"
         formControlName="postBody"
-        class="form-control"
+        class="form-control postBody"
         id="body"
       ></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div *ngIf="!this.postId">
+      <button (click)="this.sendNewPost()" type="button" class="btn btn-primary">Add new post</button>
+    </div>
+    <div *ngIf="this.postId">
+      <button (click)="this.editPost()" type="button" class="btn btn-warning">Edit post</button>
+      <button (click)="this.deletePost()" type="button" class="btn btn-danger">Delete post</button>
+    </div>
   </form>
 </div>

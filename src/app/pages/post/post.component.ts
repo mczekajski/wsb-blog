@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BlogService } from 'src/app/services/blog.service';
@@ -13,21 +13,21 @@ export class PostComponent implements OnInit {
   id: number;
   paramsSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private blogService: BlogService) {}
+  constructor(private route: ActivatedRoute, public blogService: BlogService) {}
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(params => {
       this.id = +params['id']; // converts string 'id' to a number
     });
-    this.getPost(this.id);
+    this.post = this.blogService.getPosts();
+    console.log(this.post);
+  }
+
+  ngOnChanges(): void {
+    console.log('change!')
   }
 
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
   }
-
-  getPost(id: number) {
-    this.blogService.getPost(id).subscribe(data => () => {this.post = data});
-  }
-
 }

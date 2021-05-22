@@ -14,10 +14,9 @@ export class BlogService {
 
   public getPosts() {
     this.http
-      .get(this.urlPostsBase + this.urlSortByDate + '/')
+      .get(this.urlPostsBase + this.urlSortByDate)
       .subscribe((data) => {
         this.posts = data;
-        console.log(this.posts);
       });
   }
 
