@@ -7,12 +7,14 @@ import { MainArticleCardComponent } from './main-article-card/main-article-card.
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { PostCardComponent } from './post-card/post-card.component';
+import { InfoCardComponent } from './info-card/info-card.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     MainArticleCardComponent,
-    PostCardComponent
+    PostCardComponent,
+    InfoCardComponent
   ],
   imports: [
     CommonModule,

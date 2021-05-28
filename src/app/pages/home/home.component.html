@@ -1,3 +1,13 @@
 <wsb-blog-main-article-card></wsb-blog-main-article-card>
-<wsb-blog-post-card *ngFor="let post of this.blogService.posts"
-[post]="post"></wsb-blog-post-card>
+
+<div class="flex">
+  <div class="col-xs-12 col-lg-8">
+    <wsb-blog-post-card
+      *ngFor="let post of this.blogService.posts"
+      [post]="post"
+    ></wsb-blog-post-card>
+  </div>
+  <div class="d-none d-lg-block col-lg-4">
+    <wsb-blog-info-card></wsb-blog-info-card>
+  </div>
+</div>
