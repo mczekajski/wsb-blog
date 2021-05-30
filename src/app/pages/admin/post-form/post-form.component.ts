@@ -35,7 +35,7 @@ export class PostFormComponent implements OnInit {
   }
 
   deletePost() {
-    this.blogService.deletePost(this.postId);
+    this.blogService.deletePost(this.postId).subscribe(() => alert('post deleted!'));
   }
 
   onChange(e: any) {
