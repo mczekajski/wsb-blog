@@ -15,7 +15,7 @@ export class PostFormComponent implements OnInit {
     lastEditDate: [''],
   });
 
-  postId = 0;
+  postId: number = 0;
 
   onSubmit() {
     if (this.postForm.value.selected != null) this.sendNewPost();
@@ -29,11 +29,13 @@ export class PostFormComponent implements OnInit {
   }
 
   editPost() {
-    window.alert('post edited!');
+    this.postForm.setValue({ ...this.postForm.value, lastEditDate: new Date() });
+    console.log(this.postForm.value)
+    this.blogService.editPost(this.postId, this.postForm.value).subscribe(() => alert('post edited!'));
   }
 
   deletePost() {
-    window.alert('post deleted!');
+    this.blogService.deletePost(this.postId);
   }
 
   onChange(e: any) {

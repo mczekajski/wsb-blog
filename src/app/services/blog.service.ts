@@ -24,7 +24,17 @@ export class BlogService {
     return this.posts.find((post) => post.id === postId);
   }
 
-  public sendPost(post) {
+  public sendPost(post: any) {
     return this.http.post(this.urlPostsBase, post);
+  }
+
+  public editPost(postId: number, post: any) {
+    const prevPost = this.getPost(postId);
+    post = {...post, postDate: prevPost.postDate}
+    return this.http.patch(this.urlPostsBase + '/' + postId, post)
+  }
+
+  public deletePost(postId: number) {
+    return this.http.delete(this.urlPostsBase + '/' + postId)
   }
 }
