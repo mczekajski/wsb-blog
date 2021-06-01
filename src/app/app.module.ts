@@ -11,13 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './pages/admin/admin.module';
 import { MenuComponent } from './menu/menu.component';
 import { PostComponent } from './pages/post/post.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     MenuComponent,
-    PostComponent
+    PostComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     AdminModule,

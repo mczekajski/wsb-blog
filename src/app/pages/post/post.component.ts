@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
     this.paramsSubscription = this.route.params.subscribe(params => {
       this.id = +params['id']; // converts string 'id' to a number
     });
-    this.post = this.blogService.getPosts();
+    this.post = this.blogService.getPost(this.id);
     console.log(this.post);
   }
 
