@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+export interface Post {
+  postTitle: string;
+  postBody: string;
+  postDate: string;
+  id: number;
+  lastEditDate: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +23,7 @@ export class BlogService {
   public getPosts() {
     this.http
       .get(this.urlPostsBase + this.urlSortByDate)
-      .subscribe((data) => {
+      .subscribe((data: Array<Post>) => {
         this.posts = data;
       });
   }
@@ -24,17 +32,17 @@ export class BlogService {
     return this.posts.find((post) => post.id === postId);
   }
 
-  public sendPost(post: any) {
+  public sendPost(post: Post) {
     return this.http.post(this.urlPostsBase, post);
   }
 
-  public editPost(postId: number, post: any) {
+  public editPost(postId: number, post: Post) {
     const prevPost = this.getPost(postId);
-    post = {...post, postDate: prevPost.postDate}
-    return this.http.patch(this.urlPostsBase + '/' + postId, post)
+    post = { ...post, postDate: prevPost.postDate };
+    return this.http.patch(this.urlPostsBase + '/' + postId, post);
   }
 
   public deletePost(postId: number) {
-    return this.http.delete(this.urlPostsBase + '/' + postId)
+    return this.http.delete(this.urlPostsBase + '/' + postId);
   }
 }

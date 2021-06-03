@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Post } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'wsb-blog-post-card',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent implements OnInit {
-  @Input() post: any;
+  @Input() post: Post;
 
   constructor() { }
 

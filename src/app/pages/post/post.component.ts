@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService, Post } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'wsb-blog-post',
@@ -9,7 +9,7 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  post: any;
+  post: Post;
   id: number;
   paramsSubscription: Subscription;
 
