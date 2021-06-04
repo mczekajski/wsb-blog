@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'wsb-blog';
+
+  onContentClick() {
+    document
+      .querySelector('.header__menu-list')
+      .classList.add('header__menu-list--hidden');
+  }
 }
