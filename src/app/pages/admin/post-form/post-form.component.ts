@@ -19,7 +19,7 @@ export class PostFormComponent implements OnInit {
     this.postForm.setValue({ ...this.postForm.value, postDate: new Date() });
     this.blogService
       .sendPost(this.postForm.value)
-      .subscribe((post) => console.log(post));
+      .subscribe();
   }
 
   editPost() {
