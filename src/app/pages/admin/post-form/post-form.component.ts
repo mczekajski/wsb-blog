@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -8,14 +8,8 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
-  public postForm = this.formBuilder.group({
-    postTitle: [''],
-    postBody: [''],
-    postDate: [''],
-    lastEditDate: [''],
-  });
-
-  postId: number = 0;
+  public postForm: FormGroup;
+  public postId: number = 0;
 
   onSubmit() {
     if (this.postForm.value.selected != null) this.sendNewPost();
@@ -38,6 +32,10 @@ export class PostFormComponent implements OnInit {
     this.blogService.deletePost(this.postId).subscribe(() => alert('post deleted!'));
   }
 
+  logForm() {
+    console.log(this.postForm)
+  }
+
   onChange(e: any) {
     this.postId = parseInt(e.target.value);
     const post = this.blogService.posts.find((post) => post.id == this.postId);
@@ -55,5 +53,11 @@ export class PostFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.postForm = this.formBuilder.group({
+      postTitle: ['', { validators: [Validators.minLength(10), Validators.required], updateOn: "blur" }],
+      postBody: ['', { validators: [Validators.minLength(100), Validators.required], updateOn: "blur" }],
+      postDate: [''],
+      lastEditDate: [''],
+    });
   }
 }

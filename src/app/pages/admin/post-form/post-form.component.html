@@ -24,6 +24,18 @@
         id="title"
         required
       />
+      <p
+        class="error"
+        *ngIf="postForm.get('postTitle').touched && postForm.get('postTitle').errors && postForm.get('postTitle').errors.required"
+      >
+        To pole jest obowiązkowe.
+      </p>
+      <p
+      class="error"
+      *ngIf="postForm.get('postTitle').touched && postForm.get('postTitle').errors && postForm.get('postTitle').errors.minlength"
+    >
+      Tytuł musi zawierać co najmniej 10 znaków.
+    </p>
     </div>
 
     <div class="mb-3">
@@ -34,12 +46,24 @@
         class="form-control postBody"
         id="body"
       ></textarea>
+      <p
+        class="error"
+        *ngIf="postForm.get('postBody').touched && postForm.get('postBody').errors && postForm.get('postBody').errors.required"
+      >
+        To pole jest obowiązkowe.
+      </p>
+      <p
+        class="error"
+        *ngIf="postForm.get('postBody').touched && postForm.get('postBody').errors && postForm.get('postBody').errors.minlength"
+      >
+        Post musi zawierać co najmniej 100 znaków.
+      </p>
     </div>
     <div *ngIf="!this.postId">
-      <button (click)="this.sendNewPost()" type="button" class="btn btn-primary">Add new post</button>
+      <button (click)="this.sendNewPost()" type="button" class="btn btn-primary" [disabled]="!postForm.valid">Add new post</button>
     </div>
     <div *ngIf="this.postId">
-      <button (click)="this.editPost()" type="button" class="btn btn-warning">Edit post</button>
+      <button (click)="this.editPost()" type="button" class="btn btn-warning" [disabled]="!postForm.valid">Edit post</button>
       <button (click)="this.deletePost()" type="button" class="btn btn-danger">Delete post</button>
     </div>
   </form>
