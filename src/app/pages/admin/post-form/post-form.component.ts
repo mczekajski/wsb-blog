@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService, Post } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'wsb-blog-post-form',
@@ -25,7 +25,8 @@ export class PostFormComponent implements OnInit {
   }
 
   editPost() {
-    this.postForm.setValue({ ...this.postForm.value, lastEditDate: new Date() });
+    const post = this.posts.find((post: Post) => post.id == this.postId);
+    this.postForm.setValue({ ...this.postForm.value, postDate: post.postDate, lastEditDate: new Date() });
     this.blogService.editPost(this.postId, this.postForm.value).subscribe(() => alert('post edited'));
   }
 
@@ -35,7 +36,7 @@ export class PostFormComponent implements OnInit {
 
   onChange(e: any) {
     this.postId = parseInt(e.target.value);
-    const post = this.posts.find((post) => post.id == this.postId);
+    const post = this.posts.find((post: Post) => post.id == this.postId);
     post
       ? this.postForm.patchValue({
           postTitle: post.postTitle,

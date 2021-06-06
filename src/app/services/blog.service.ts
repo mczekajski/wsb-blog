@@ -32,11 +32,8 @@ export class BlogService {
     return this.http.post(this.urlPostsBase, post);
   }
 
-  public editPost(postId: number, post: Post) {
-    let prevPost: Post;
-    this.getPost(postId).subscribe(post => prevPost = post);
-    post = { ...post, postDate: prevPost.postDate };
-    return this.http.patch(this.urlPostsBase + '/' + postId, post);
+  public editPost(postId: number, editedPost: Post) {
+    return this.http.patch(this.urlPostsBase + '/' + postId, editedPost);
   }
 
   public deletePost(postId: number) {
