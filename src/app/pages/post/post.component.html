@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-body">
-    <h4>{{ this.post.postTitle }}</h4>
-    <h6 class="card-subtitle mb-2 text-muted">{{ post.postDate | date }} <span *ngIf="post.lastEditDate">(last edited: {{ post.lastEditDate | date }})</span></h6>
-    <p>{{ this.post.postBody }}</p>
+    <h4>{{ this.post?.postTitle }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{ post?.postDate | date }} <span *ngIf="post?.lastEditDate">(last edited: {{ post.lastEditDate | date }})</span></h6>
+    <p>{{ this.post?.postBody }}</p>
     <a routerLink="/" class="card-link">Redirect to main page...</a>
   </div>
 </div>

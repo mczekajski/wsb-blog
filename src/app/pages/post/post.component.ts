@@ -13,14 +13,13 @@ export class PostComponent implements OnInit {
   id: number;
   paramsSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, public blogService: BlogService) {}
+  constructor(private route: ActivatedRoute, private blogService: BlogService) {}
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.id = +params['id']; // converts string 'id' to a number
+      this.id = params['id'];
     });
-    this.post = this.blogService.getPost(this.id);
-    console.log(this.post);
+    this.blogService.getPost(this.id).subscribe(post => this.post = post);
   }
 
   ngOnChanges(): void {

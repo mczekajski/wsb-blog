@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -10,6 +10,8 @@ import { BlogService } from 'src/app/services/blog.service';
 export class PostFormComponent implements OnInit {
   public postForm: FormGroup;
   public postId: number = 0;
+
+  @Input() posts: any;
 
   onSubmit() {
     if (this.postForm.value.selected != null) this.sendNewPost();
@@ -24,21 +26,16 @@ export class PostFormComponent implements OnInit {
 
   editPost() {
     this.postForm.setValue({ ...this.postForm.value, lastEditDate: new Date() });
-    console.log(this.postForm.value)
-    this.blogService.editPost(this.postId, this.postForm.value).subscribe(() => alert('post edited!'));
+    this.blogService.editPost(this.postId, this.postForm.value).subscribe(() => alert('post edited'));
   }
 
   deletePost() {
-    this.blogService.deletePost(this.postId).subscribe(() => alert('post deleted!'));
-  }
-
-  logForm() {
-    console.log(this.postForm)
+    this.blogService.deletePost(this.postId).subscribe(() => alert('post deleted'));
   }
 
   onChange(e: any) {
     this.postId = parseInt(e.target.value);
-    const post = this.blogService.posts.find((post) => post.id == this.postId);
+    const post = this.posts.find((post) => post.id == this.postId);
     post
       ? this.postForm.patchValue({
           postTitle: post.postTitle,
@@ -49,7 +46,7 @@ export class PostFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public blogService: BlogService
+    private blogService: BlogService
   ) {}
 
   ngOnInit(): void {

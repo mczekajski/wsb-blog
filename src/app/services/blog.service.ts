@@ -13,7 +13,7 @@ export interface Post {
   providedIn: 'root',
 })
 export class BlogService {
-  public posts: any;
+  public posts: Array<Post>;
 
   private urlPostsBase: string = 'http://localhost:3000/posts';
   private urlSortByDate: string = '?_sort=postDate&_order=desc';
@@ -21,15 +21,13 @@ export class BlogService {
   constructor(private http: HttpClient) {}
 
   public getPosts() {
-    this.http
-      .get(this.urlPostsBase + this.urlSortByDate)
-      .subscribe((data: Array<Post>) => {
-        this.posts = data;
-      });
+    return this.http
+      .get<Array<Post>>(this.urlPostsBase + this.urlSortByDate)
   }
 
   public getPost(postId: number) {
-    return this.posts.find((post) => post.id === postId);
+    return this.http
+    .get<Post>(this.urlPostsBase + '/' + postId)
   }
 
   public sendPost(post: Post) {
@@ -37,7 +35,8 @@ export class BlogService {
   }
 
   public editPost(postId: number, post: Post) {
-    const prevPost = this.getPost(postId);
+    let prevPost: Post;
+    this.getPost(postId).subscribe(post => prevPost = post);
     post = { ...post, postDate: prevPost.postDate };
     return this.http.patch(this.urlPostsBase + '/' + postId, post);
   }

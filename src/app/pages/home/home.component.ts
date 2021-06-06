@@ -7,10 +7,12 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public blogService: BlogService) {}
+  public posts: any;
+  
+  constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.blogService.getPosts();
+    this.blogService.getPosts().subscribe(posts => this.posts = posts);
   }
 
 }
