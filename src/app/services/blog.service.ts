@@ -13,8 +13,6 @@ export interface Post {
   providedIn: 'root',
 })
 export class BlogService {
-  public posts: Array<Post>;
-
   private urlPostsBase: string = 'http://localhost:3000/posts';
   private urlSortByDate: string = '?_sort=postDate&_order=desc';
 
