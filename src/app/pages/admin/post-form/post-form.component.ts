@@ -9,7 +9,7 @@ import { BlogService, Post } from 'src/app/services/blog.service';
 })
 export class PostFormComponent implements OnInit {
   public postForm: FormGroup;
-  public postId: number = 0;
+  public postId: string = '';
 
   @Input() posts: any;
 
@@ -25,7 +25,7 @@ export class PostFormComponent implements OnInit {
   }
 
   editPost() {
-    const post = this.posts.find((post: Post) => post.id == this.postId);
+    const post = this.posts.find((post: Post) => post._id == this.postId);
     this.postForm.setValue({ ...this.postForm.value, postDate: post.postDate, lastEditDate: new Date() });
     this.blogService.editPost(this.postId, this.postForm.value).subscribe(() => alert('post edited'));
   }
@@ -35,8 +35,8 @@ export class PostFormComponent implements OnInit {
   }
 
   onChange(e: any) {
-    this.postId = parseInt(e.target.value);
-    const post = this.posts.find((post: Post) => post.id == this.postId);
+    this.postId = e.target.value;
+    const post = this.posts.find((post: Post) => post._id == this.postId);
     post
       ? this.postForm.patchValue({
           postTitle: post.postTitle,

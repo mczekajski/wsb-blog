@@ -5,7 +5,7 @@ export interface Post {
   postTitle: string;
   postBody: string;
   postDate: string;
-  id: number;
+  _id: string;
   lastEditDate: string;
 }
 
@@ -13,14 +13,14 @@ export interface Post {
   providedIn: 'root',
 })
 export class BlogService {
-  private urlPostsBase: string = 'http://localhost:3000/posts';
+  private urlPostsBase: string = 'https://wsb-blog-backend.herokuapp.com/posts/';
   private urlSortByDate: string = '?_sort=postDate&_order=desc';
 
   constructor(private http: HttpClient) {}
 
   public getPosts() {
     return this.http
-      .get<Array<Post>>(this.urlPostsBase + this.urlSortByDate)
+      .get<Array<Post>>(this.urlPostsBase)
   }
 
   public getPost(postId: number) {
@@ -32,11 +32,11 @@ export class BlogService {
     return this.http.post(this.urlPostsBase, post);
   }
 
-  public editPost(postId: number, editedPost: Post) {
+  public editPost(postId: string, editedPost: Post) {
     return this.http.patch(this.urlPostsBase + '/' + postId, editedPost);
   }
 
-  public deletePost(postId: number) {
+  public deletePost(postId: string) {
     return this.http.delete(this.urlPostsBase + '/' + postId);
   }
 }

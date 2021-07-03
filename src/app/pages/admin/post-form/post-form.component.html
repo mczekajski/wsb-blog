@@ -3,7 +3,7 @@
     <label for="selection" class="form-label">Select post</label>
     <select (change)="onChange($event)" class="form-select" id="selection">
       <option value="0">New post</option>
-      <option *ngFor="let post of this.posts" [value]="post.id">
+      <option *ngFor="let post of this.posts" [value]="post._id">
         {{ post.postDate | date }} {{ post.postTitle }}
       </option>
     </select>
