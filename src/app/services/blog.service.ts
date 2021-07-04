@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Post {
+  _id: string;
   postTitle: string;
   postBody: string;
   postDate: string;
-  _id: string;
   lastEditDate: string;
 }
 
