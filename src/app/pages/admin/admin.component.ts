@@ -20,4 +20,5 @@ export class AdminComponent implements OnInit {
   get isLoggedIn(): boolean {
     return this._isLoggedIn;
   }
+  
 }

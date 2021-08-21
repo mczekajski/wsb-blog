@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      login: [
+      email: [
         '',
         {
           validators: [Validators.required],
@@ -43,6 +43,12 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm);
+    this.blogService.login(this.loginForm.value).subscribe(
+      (res) => window.localStorage.setItem('jwt', res),
+      (err) => {
+        console.log(err);
+        window.localStorage.removeItem('jwt');
+      }
+    );
   }
 }
