@@ -44,7 +44,10 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.userService.login(this.loginForm.value).subscribe(
-      (res) => window.localStorage.setItem('jwt', res),
+      (res) => {
+        window.localStorage.setItem('jwt', res);
+        this.userService.setLoggedIn(true);
+      },
       (err) => {
         console.log(err);
         window.localStorage.removeItem('jwt');

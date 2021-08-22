@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService, Post } from 'src/app/services/blog.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'wsb-blog-post-form',
@@ -12,6 +13,12 @@ export class PostFormComponent implements OnInit {
   public postId: string = '';
 
   @Input() posts: any;
+  
+  constructor(
+      private formBuilder: FormBuilder,
+      private blogService: BlogService,
+      private userService: UserService
+    ) {}
 
   onSubmit() {
     if (this.postForm.value.selected != null) this.sendNewPost();
@@ -45,11 +52,6 @@ export class PostFormComponent implements OnInit {
       : this.postForm.patchValue({ postTitle: '', postBody: '' });
   }
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private blogService: BlogService
-  ) {}
-
   ngOnInit(): void {
     this.postForm = this.formBuilder.group({
       postTitle: ['', { validators: [Validators.minLength(10), Validators.required], updateOn: "blur" }],
@@ -57,5 +59,9 @@ export class PostFormComponent implements OnInit {
       postDate: [''],
       lastEditDate: [''],
     });
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 }
