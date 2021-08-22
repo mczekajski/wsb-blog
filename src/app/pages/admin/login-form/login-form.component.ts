@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BlogService } from 'src/app/services/blog.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'wsb-blog-login-form',
@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private blogService: BlogService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.blogService.login(this.loginForm.value).subscribe(
+    this.userService.login(this.loginForm.value).subscribe(
       (res) => window.localStorage.setItem('jwt', res),
       (err) => {
         console.log(err);

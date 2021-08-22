@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Routes } from '../utils/routes';
 
 export interface Post {
   _id: string;
@@ -13,41 +14,29 @@ export interface Post {
   providedIn: 'root',
 })
 export class BlogService {
-  private urlHeroku: string = 'https://wsb-blog-backend.herokuapp.com/';
-  private urlLocal: string = 'http://localhost:80/';
-  private urlBase: string = this.urlLocal;
-  private urlLogin: string = 'user/login';
-  private urlPosts: string = 'posts';
-  private urlSortByDate: string = '?_sort=postDate&_order=desc';
-
   constructor(private http: HttpClient) {}
 
   // POSTS
   public getPosts() {
     return this.http
-      .get<Array<Post>>(this.urlBase + this.urlPosts)
+      .get<Array<Post>>(Routes.BASE + Routes.POSTS)
   }
 
   public getPost(postId: number) {
     return this.http
-    .get<Post>(this.urlBase + this.urlPosts + '/' + postId)
+    .get<Post>(Routes.BASE + Routes.POSTS + '/' + postId)
   }
 
   public sendPost(post: Post) {
-    return this.http.post(this.urlBase + this.urlPosts, post);
+    return this.http.post(Routes.BASE + Routes.POSTS, post);
   }
 
   public editPost(postId: string, editedPost: Post) {
-    return this.http.patch(this.urlBase + this.urlPosts + '/' + postId, editedPost);
+    return this.http.patch(Routes.BASE + Routes.POSTS + '/' + postId, editedPost);
   }
 
   public deletePost(postId: string) {
-    return this.http.delete(this.urlBase + this.urlPosts + '/' + postId);
-  }
-
-  // LOGIN
-  public login(userData) {
-    return this.http.post(this.urlBase + this.urlLogin, userData, { responseType: 'text' });    
+    return this.http.delete(Routes.BASE + Routes.POSTS + '/' + postId);
   }
 
 }
